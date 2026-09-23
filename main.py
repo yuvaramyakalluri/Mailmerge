@@ -1,26 +1,27 @@
 import os
-# ... your existing imports and script execution ...
+from certificate_agent.main import main
 
 if __name__ == "__main__":
+    # 1. Run the certificate generation agent
     main()
 
-    # Create certificates directory if not exists
+    # 2. Ensure the output folder exists
     output_dir = "certificates"
     os.makedirs(output_dir, exist_ok=True)
 
-    # Generate an index.html file to serve on GitHub Pages
+    # 3. Generate index.html so GitHub Pages can display the files
     pdf_files = [f for f in os.listdir(output_dir) if f.endswith(".pdf")]
-    
+
     html_content = """<!DOCTYPE html>
 <html>
 <head>
     <title>Generated Certificates</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        h1 { color: #333; }
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f6f8fa; }
+        h1 { color: #24292e; }
         ul { list-style-type: none; padding: 0; }
-        li { margin: 10px 0; }
-        a { text-decoration: none; color: #0366d6; font-size: 18px; }
+        li { margin: 12px 0; padding: 12px; background: white; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        a { text-decoration: none; color: #0366d6; font-size: 18px; font-weight: bold; }
         a:hover { text-decoration: underline; }
     </style>
 </head>
